@@ -15,6 +15,7 @@ namespace MATRIX_2._0
         int row1, col1, row2, col2;
         TextBox[,] Matrix1;
         TextBox[,] Matrix2;
+        Matrix_operation mat_oper = new Matrix_operation();
 
         public Form1()
         {
@@ -217,7 +218,7 @@ namespace MATRIX_2._0
 
                 Matrix m1 = new Matrix(input_mat1);
                 Matrix m2 = new Matrix(input_mat2);
-                Matrix res = Matrix_operation.Sum(m1, m2);
+                Matrix res = mat_oper.Sum(m1, m2);
 
                 pan_res.Controls.Clear();
                 for (int i = 0; i < matrix_sum.GetLength(0); i++)
@@ -261,7 +262,7 @@ namespace MATRIX_2._0
 
                 Matrix m1 = new Matrix(input_mat1);
                 Matrix m2 = new Matrix(input_mat2);
-                Matrix res = _0.Matrix_operation.Minus(m1, m2);
+                Matrix res = mat_oper.Minus(m1, m2);
 
                 pan_res.Controls.Clear();
                 for (int i = 0; i < matrix_minus.GetLength(0); i++)
@@ -312,7 +313,7 @@ namespace MATRIX_2._0
 
                 Matrix m1 = new Matrix(input_mat1);
                 Matrix m2 = new Matrix(input_mat2);
-                Matrix res = _0.Matrix_operation.Multiplay(m1, m2);
+                Matrix res = mat_oper.Multiplay(m1, m2);
 
                 pan_res.Controls.Clear();
                 for (int i = 0; i < row1; i++)
@@ -349,6 +350,7 @@ namespace MATRIX_2._0
             TextBox[,] matrix_multiplay_num = new TextBox[int.Parse(Row1.Text), int.Parse(Col1.Text)];
             int[,] input_mat1 = new int[row1, col1];
             int k = Convert.ToInt32(this.Controls.Find("Num1", true)[0].Text);
+            int m231;
 
             for (int i = 0; i < Matrix1.GetLength(0); i++)
             {
@@ -359,7 +361,7 @@ namespace MATRIX_2._0
             }
 
             Matrix m1 = new Matrix(input_mat1);
-            Matrix res = Matrix_operation.MultiplayNum(m1, k);
+            Matrix res = mat_oper.MultiplayNum(m1, k);
 
             pan_res.Controls.Clear();
             for (int i = 0; i < matrix_multiplay_num.GetLength(0); i++)
@@ -388,7 +390,7 @@ namespace MATRIX_2._0
             }
 
             Matrix m1 = new Matrix(input_mat1);
-            Matrix res = _0.Matrix_operation.Transposition(m1);
+            Matrix res = mat_oper.Transposition(m1);
 
             pan_res.Controls.Clear();
             for (int i = 0; i < matrix_transposition.GetLength(0); i++)
@@ -417,7 +419,7 @@ namespace MATRIX_2._0
             }
 
             Matrix m1 = new Matrix(input_mat2);
-            Matrix res = _0.Matrix_operation.Transposition(m1);
+            Matrix res = mat_oper.Transposition(m1);
 
             pan_res.Controls.Clear();
             for (int i = 0; i < matrix_transposition.GetLength(0); i++)
@@ -454,7 +456,7 @@ namespace MATRIX_2._0
             }
 
             Matrix m1 = new Matrix(input_mat2);
-            Matrix res = Matrix_operation.MultiplayNum(m1, k);
+            Matrix res = mat_oper.MultiplayNum(m1, k);
 
             pan_res.Controls.Clear();
             for (int i = 0; i < matrix_multiplay_num.GetLength(0); i++)
@@ -483,7 +485,7 @@ namespace MATRIX_2._0
                 }
 
                 Matrix m1 = new Matrix(input_mat1);
-                Double res = Matrix_operation.Determinant(m1, row1);
+                Double res = mat_oper.Determinant(m1, row1);
                 //Double res = Matrix.determinantOfMatrix(m1, row1-1);
 
                 
@@ -520,7 +522,7 @@ namespace MATRIX_2._0
                 }
 
                 Matrix m2 = new Matrix(input_mat2);
-                Double res = Matrix_operation.Determinant(m2, row1);
+                Double res = mat_oper.Determinant(m2, row1);
 
                 pan_det2.Controls.Clear();
                 TextBox det1 = new TextBox() { Name = "Det2", Location = new Point(0, 0), Text = res.ToString(), Height = 40, Width = 40, TextAlign = HorizontalAlignment.Center };

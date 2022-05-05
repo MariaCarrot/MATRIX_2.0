@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace MATRIX_2._0
 {
-    internal class Matrix_operation
+    internal class Matrix_operation: IMatrixOperation
     {
-        public static Matrix Sum(Matrix m1, Matrix m2)// сумма
+        public Matrix Sum(Matrix m1, Matrix m2)// сумма
         {
             int[,] m3 = new int[m1.value.GetLength(0), m1.value.GetLength(1)];
             for (int i = 0; i < m1.value.GetLength(0); i++)
@@ -23,7 +23,7 @@ namespace MATRIX_2._0
             return m3_mat;
         }
 
-        public static Matrix Minus(Matrix m1, Matrix m2)//вычитание
+        public  Matrix Minus(Matrix m1, Matrix m2)//вычитание
         {
             int[,] m3 = new int[m1.value.GetLength(0), m1.value.GetLength(1)];
             for (int i = 0; i < m1.value.GetLength(0); i++)
@@ -37,7 +37,7 @@ namespace MATRIX_2._0
             return m3_mat;
         }
 
-        public static Matrix Multiplay(Matrix m1, Matrix m2)//умножение на матрицу
+        public  Matrix Multiplay(Matrix m1, Matrix m2)//умножение на матрицу
         {
             int[,] m3 = new int[m1.value.GetLength(0), m2.value.GetLength(1)];
             for (int i = 0; i < m1.value.GetLength(0); i++)
@@ -54,7 +54,7 @@ namespace MATRIX_2._0
             return m3_mat;
         }
 
-        public static Matrix MultiplayNum(Matrix m1, int k)//умножение на число
+        public  Matrix MultiplayNum(Matrix m1, int k)//умножение на число
         {
             int[,] m3 = new int[m1.value.GetLength(0), m1.value.GetLength(1)];
 
@@ -69,7 +69,7 @@ namespace MATRIX_2._0
             return m3_mat;
         }
 
-        public static Matrix Transposition(Matrix m1)//транспонирование 
+        public  Matrix Transposition(Matrix m1)//транспонирование 
         {
             int[,] m3 = new int[m1.value.GetLength(1), m1.value.GetLength(0)];
 
@@ -84,7 +84,7 @@ namespace MATRIX_2._0
             return m3_mat;
         }
 
-        public static double Determinant(Matrix m1, int n)//определитель
+        public  double Determinant(Matrix m1, int n)//определитель
         {
             if (m1.value.GetLength(0) == 2)
             {
@@ -116,8 +116,9 @@ namespace MATRIX_2._0
                         }
                         a++;
                     }
+                    Matrix_operation mat_oper = new Matrix_operation();
                     Matrix M3 = new Matrix(m3);
-                    det += Math.Pow(-1, (double)i + 2) * m1.value[0, i] * Matrix_operation.Determinant(M3, n - 1);
+                    det += Math.Pow(-1, (double)i + 2) * m1.value[0, i] * mat_oper.Determinant(M3, n - 1);
                 }
                 return det;
             }
